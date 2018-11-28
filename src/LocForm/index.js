@@ -1,28 +1,15 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import axios from 'axios';
-const API_KEY = process.env.REACT_APP_WEATHER_API_KEY
-
-class LocForm extends Component {
-	state = {
-		weather: []
-	}
-	componentDidMount() {		
-		axios.get(`http://api.openweathermap.org/data/2.5/weather?zip=94612,us&APPID=${API_KEY}`)
-		.then(res => {
-			const weather = res.data;
-			this.setState({ weather });
-			console.log(weather)
-		}).catch(error => {
-			console.log('Error from fetching data', error);
-		})
-	}
-
+class LocForm extends React.Component {
 	render() {
 		return (
-			<div>Weather!</div>
+			<form onSubmit={this.props.loadWeather}>
+				<input type="text" name="city" placeholder="City..." />
+				<input type="text" name="country" placeholder="Country..." />
+				<button>Get Weather</button>
+			</form>
 		);
 	}
 }
 
-export default LocForm
+export default LocForm;
