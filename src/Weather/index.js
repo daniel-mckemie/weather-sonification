@@ -18,6 +18,14 @@ class Weather extends React.Component {
 				<p>
 					Humidity:
 					<span> {this.props.humidity}</span>
+				</p>				
+				<p>
+					Pressure:
+					<span> {this.props.pressure}</span>
+				</p>
+				<p>
+					Clouds:
+					<span> {this.props.clouds}</span>
 				</p>
 				<p>
 					Conditions:
