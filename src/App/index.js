@@ -25,13 +25,13 @@ class App extends Component {
 			<ROscillator
 				start={1}
 				key={1}
-				frequency={440}
-				type="triangle"
+				frequency={0}
+				type="sine"
 				detune={0}
 			/>,
 			<RBiquadFilter
 				key={2}
-				frequency={600}
+				frequency={0}
 				type="lowpass"
 				detune={0}
 				transitionDuration={0.8}
@@ -42,12 +42,14 @@ class App extends Component {
 		this.state = {
 			nodes: this.nodeCache,
 			toggle: true,
-			freq: 440
+			freq: 440,
 		};
 
 		this.change = () => {
-      const changed = this.nodeCache.slice();
-      changed.splice(1, 1, <RGain key={2} gain={0.5} />);
+      const changed = this.nodeCache.slice();      
+      changed.splice(1, 1, <ROscillator start={0} key={4} frequency={this.state.humidity} />);
+      changed.splice(2, 1, <ROscillator start={0} key={5} frequency={this.state.temperature} />);
+      // changed.splice(3, 1, <RBiquadFilter start={0} key={6} frequency={100} />);
       this.setState({ nodes: changed });
     };
 	}
@@ -109,17 +111,11 @@ class App extends Component {
 						</div>
 					</div>
 				</div>
-				<RAudioContext debug={true}>
-        <article>
-          <h1>Mutation</h1>
-          This example demonstrates how <em>r-audio</em> graphs can be mutated via React state.
-          <em>r-audio</em> takes care of reconfiguring the connections and instantiating new nodes as necessary.
-        </article>
+				<RAudioContext debug={true}>        
         <RPipeline>
-          <button onClick={this.change}>Mutate audio graph</button>
-          <ROscillator start={0} frequency={440} type="triangle" detune={0} />
+          <button onClick={this.change}>Mutate audio graph</button>          
           {this.state.nodes}
-          <RGain gain={0.5} transitionDuration={1} />
+          <RGain />
         </RPipeline>
       </RAudioContext>
 			</div>
