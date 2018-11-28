@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class LocForm extends React.Component {
+class LocForm extends Component {
 	render() {
 		return (
 			<form onSubmit={this.props.loadWeather}>
