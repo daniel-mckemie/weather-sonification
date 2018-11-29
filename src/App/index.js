@@ -11,8 +11,8 @@ import {
 
 import Info from "../Info";
 import Weather from "../Weather";
-import LocFormCity from "../LocFormCity/";
-import LocFormZip from "../LocFormZip/";
+import LocFormCity from "../LocFormCity";
+import LocFormZip from "../LocFormZip";
 
 const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
 
@@ -29,12 +29,13 @@ class App extends Component {
 
 		this.change = () => {
       const changed = this.nodeCache.slice();      
-      changed.splice(1, 1, <ROscillator start={0} key={0} frequency={Math.round((((this.state.temperature) - 273.15) * 9/5 + 32) * 10) / 10} type="sine" />);
-      changed.splice(2, 1, <ROscillator start={0} key={1} frequency={this.state.humidity} type="sawtooth" />);
+      changed.splice(1, 1, <ROscillator start={0} key={0} frequency={Math.round((((this.state.temperature) - 273.15) * 9/5 + 32) * 10) / 10} type="triangle" />);
+      changed.splice(2, 1, <ROscillator start={0} key={1} frequency={this.state.humidity} type="triangle" />);
       changed.splice(3, 1, <ROscillator start={0} key={2} frequency={this.state.lat} type="triangle" />);
-      changed.splice(4, 1, <ROscillator start={0} key={3} frequency={this.state.lon} type="square" />);            
-      changed.splice(5, 1, <RBiquadFilter start={0} key={4} type="lowpass" frequency={Math.round((this.state.pressure * 0.750062) * 100) / 100} Q={(this.state.clouds) / 10}/>);
-      changed.splice(6, 1, <RGain start={0} key={5} gain={((this.state.wind) / 100)}/>);
+      changed.splice(4, 1, <ROscillator start={0} key={3} frequency={this.state.lon} type="triangle" />);
+      changed.splice(5, 1, <ROscillator start={0} key={4} frequency={(this.state.wind) * 10} type="triangle" />);            
+      changed.splice(6, 1, <RBiquadFilter start={0} key={5} type="lowpass" frequency={Math.round((this.state.pressure * 0.750062) * 100) / 100} Q={(this.state.clouds * 5) / 10}/>);
+      changed.splice(7, 1, <RGain start={0} key={6} gain={0.2}/>);
       this.setState({ nodes: changed });
     };
 	}
@@ -72,7 +73,7 @@ class App extends Component {
 				visibility: response.visibility,
 				humidity: response.main.humidity,				
 				pressure: response.main.pressure,
-				clouds: response.clouds.all,
+				clouds: response.clouds.all || 50,
 				wind: response.wind.speed,				
 				description: response.weather[0].description,
 				error: ""
@@ -116,18 +117,21 @@ class App extends Component {
 	render() {
 		return (
 			<div>
-			 <Info />
+				<Info />
 				<div className="wrapper">
 					<div className="main">
 						<div className="container">
 							<div className="row">
-								
-								<div className="col-xs-7 form-container">									
-									<LocFormCity loadWeather={this.getWeatherByCity} />									
-								<hr />								
+								<div className="col-4 form-container">
+									<LocFormCity loadWeather={this.getWeatherByCity} />
+									<hr />
 									<LocFormZip loadWeather={this.getWeatherByZip} />
+									<hr />
+									<button className="btn btn-danger" onClick={this.change}>SONIFY</button>          
 								</div>
+								<div className="col-4">
 									<Weather
+										error={this.state.error}
 										temperature={this.state.temperature}
 										city={this.state.city}
 										country={this.state.country}
@@ -136,23 +140,18 @@ class App extends Component {
 										humidity={this.state.humidity}
 										pressure={this.state.pressure}
 										clouds={this.state.clouds}
-										wind={this.state.wind}																		
-										description={this.state.description}
-										error={this.state.error}
+										wind={this.state.wind}
+										description={this.state.description}										
 									/>
-
-								</div>
+								</div>								
 							</div>
 						</div>
 					</div>
-				
-				<RAudioContext>        
-        <RPipeline>
+				</div>
 
-          <button className="btn btn-success" onClick={this.change}>Sonify Weather</button>          
-          {this.state.nodes}          
-        </RPipeline>
-      </RAudioContext>
+				<RAudioContext>
+					<RPipeline>{this.state.nodes}</RPipeline>
+				</RAudioContext>
 			</div>
 		);
 	}

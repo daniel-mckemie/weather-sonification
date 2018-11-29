@@ -4,66 +4,69 @@ class Weather extends React.Component {
 	render() {
 		return (
 			<div>
+				<ul className="list-group">
+
 				{
 				this.props.country && this.props.city && <p>
 					Location:
-					<span>
+					<li className="list-group-item">
 						{" "}
 						{this.props.city} {this.props.country}
-					</span>
+					</li>
 				</p>
 				}
 				{
 				this.props.lat && this.props.lon && <p>
 					Latitude/Longitude:
-					<span>
+					<li className="list-group-item">
 						{" "}
 						{this.props.lat}, {this.props.lon}
-					</span>
+					</li>
 				</p>
 				}			
 				{
 				this.props.temperature &&	<p>
 					Temperature:
-					<span> {Math.round(((this.props.temperature) - 273.15) * 10) / 10}° C</span>
+					<li className="list-group-item"> {Math.round(((this.props.temperature) - 273.15) * 10) / 10}° C</li>
 				</p>
 				}
 				{
 				this.props.humidity && <p>
 					Humidity:
-					<span> {this.props.humidity}%</span>
+					<li className="list-group-item"> {this.props.humidity}%</li>
 				</p>				
 				}
 				{
 				this.props.pressure && <p>
 					Air pressure:
-					<span> {Math.round(((this.props.pressure * 0.750062) / 25.4) * 100) / 100} mmHg</span>
+					<li className="list-group-item"> {Math.round(((this.props.pressure * 0.750062) / 25.4) * 100) / 100} mmHg</li>
 				</p>
 				}
 				{
 				this.props.clouds && <p>
 					Clouds:
-					<span> {this.props.clouds}% coverage</span>
+					<li className="list-group-item"> {this.props.clouds}% coverage</li>
 				</p>
 				}
 				{
 				this.props.wind && <p>
 					Wind:
-					<span>
+					<li className="list-group-item">
 						{" "}
 						{this.props.wind} MPH
-					</span>
+					</li>
 				</p>
 				}				
 				{
 				this.props.description && <p>
 					Conditions:
-					<span> {this.props.description}</span>
+					<li className="list-group-item"> {this.props.description}</li>
 				</p>
 				}
 				{
 				this.props.error && <p>{this.props.error}</p>
 				}
+				</ul>
 			</div>
 		);
 	}
