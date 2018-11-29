@@ -9,9 +9,8 @@ import {
 	RPipeline
 } from "r-audio";
 
-// import axios from "axios";
+import Info from "../Info";
 import Weather from "../Weather";
-
 import LocFormCity from "../LocFormCity/";
 import LocFormZip from "../LocFormZip/";
 
@@ -117,14 +116,17 @@ class App extends Component {
 	render() {
 		return (
 			<div>
+			 <Info />
 				<div className="wrapper">
 					<div className="main">
 						<div className="container">
 							<div className="row">
-								<div className="col-xs-5 title-container" />
-								<div className="col-xs-7 form-container">
-									<LocFormCity loadWeather={this.getWeatherByCity} />
+								
+								<div className="col-xs-7 form-container">									
+									<LocFormCity loadWeather={this.getWeatherByCity} />									
+								<hr />								
 									<LocFormZip loadWeather={this.getWeatherByZip} />
+								</div>
 									<Weather
 										temperature={this.state.temperature}
 										city={this.state.city}
@@ -138,14 +140,16 @@ class App extends Component {
 										description={this.state.description}
 										error={this.state.error}
 									/>
+
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-				<RAudioContext debug={true}>        
+				
+				<RAudioContext>        
         <RPipeline>
-          <button onClick={this.change}>Mutate audio graph</button>          
+
+          <button className="btn btn-success" onClick={this.change}>Sonify Weather</button>          
           {this.state.nodes}          
         </RPipeline>
       </RAudioContext>
