@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
+import './style.css'
 
 class LocFormCity extends Component {
 	render() {
@@ -6,7 +7,7 @@ class LocFormCity extends Component {
 			<form onSubmit={this.props.loadWeather}>
 				<div className="row">
 					<div className="col">
-						<h3>Get Weather by City/Country</h3>
+						<h4 className="info-header">Get Weather by City/Country</h4>
 						<input
 							type="text"
 							className="form-control"

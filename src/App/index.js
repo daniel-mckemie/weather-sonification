@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./style.css";
+import './style.css';
 
 import {
 	RAudioContext,
@@ -10,6 +10,8 @@ import {
 } from "r-audio";
 
 import Info from "../Info";
+import InfoFoot from "../InfoFoot";
+import Instructions from "../Instructions";
 import Weather from "../Weather";
 import LocFormCity from "../LocFormCity";
 import LocFormZip from "../LocFormZip";
@@ -120,14 +122,16 @@ class App extends Component {
 				<Info />
 				<div className="wrapper">
 					<div className="main">
-						<div className="container">
+						<div className="container">						
 							<div className="row">
 								<div className="col-4 form-container">
 									<LocFormCity loadWeather={this.getWeatherByCity} />
 									<hr />
 									<LocFormZip loadWeather={this.getWeatherByZip} />
 									<hr />
-									<button className="btn btn-danger" onClick={this.change}>SONIFY</button>          
+									<button className="btn btn-danger btn-sonify" onClick={this.change}>SONIFY</button>
+									<hr />
+									<Instructions />																         
 								</div>
 								<div className="col-4">
 									<Weather
@@ -144,14 +148,14 @@ class App extends Component {
 										description={this.state.description}										
 									/>
 								</div>								
-							</div>
+							</div>							
 						</div>
 					</div>
 				</div>
-
 				<RAudioContext>
 					<RPipeline>{this.state.nodes}</RPipeline>
 				</RAudioContext>
+				<InfoFoot />				
 			</div>
 		);
 	}

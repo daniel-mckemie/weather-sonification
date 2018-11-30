@@ -1,0 +1,16 @@
+ul.list-group {
+  float: left;
+  list-style-type: none;
+  font-weight: 600;
+  
+  
+}
+
+ul.list-group li {  
+  display: block;
+  font-weight: bold;
+  padding: 5px;
+  text-decoration: none;  
+  width: 15em;
+  background-color: #dcdcdc;
+}

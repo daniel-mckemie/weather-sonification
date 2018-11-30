@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
+import './style.css'
 
 class LocFormZip extends Component {
 	render() {
@@ -6,7 +7,7 @@ class LocFormZip extends Component {
 			<form onSubmit={this.props.loadWeather}>
 				<div className="row">
 					<div className="col">
-					<h3>Get Weather by Zip Code (US Only)</h3>
+					<h4 className="info-header">Get Weather by Zip Code <br /><i className="subtitle">(US Only)</i></h4>
 						<input type="text" className="form-control" name="zip" placeholder="Zip Code" />
 					</div>
 				</div>
