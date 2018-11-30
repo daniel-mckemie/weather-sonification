@@ -1,3 +1,3 @@
 # Weather Sonification App
 
-Website application built in React that takes in a zip code, and returns the real-time data of the weather in that location in the form of sound; using the Weather API and the Web Audio API.
+A real-time data sonifier built in React, that reads the weather based on City/Country or Zip Code within the United States.  Returns a group of weather information from the Open Weather Map and sonifies it using the Web Audio API/R-Audio library.
