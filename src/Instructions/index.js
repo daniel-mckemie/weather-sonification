@@ -5,7 +5,7 @@ const Instructions = props => {
         <div>
             <button
                 type="button"
-                class="btn btn-success"
+                className="btn btn-success"
                 data-toggle="modal"
                 data-target="#exampleModal"
             >
@@ -13,29 +13,29 @@ const Instructions = props => {
             </button>
 
             <div
-                class="modal fade"
+                className="modal fade"
                 id="exampleModal"
-                tabindex="-1"
+                tabIndex="-1"
                 role="dialog"
                 aria-labelledby="exampleModalLabel"
                 aria-hidden="true"
             >
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">
+                <div className="modal-dialog" role="document">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h5 className="modal-title" id="exampleModalLabel">
                                 Instructions for use:
                             </h5>
                             <button
                                 type="button"
-                                class="close"
+                                className="close"
                                 data-dismiss="modal"
                                 aria-label="Close"
                             >
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <div class="modal-body">
+                        <div className="modal-body">
                             
                             <p>
                                 This is an app that sonifies real time weather
@@ -70,14 +70,16 @@ const Instructions = props => {
                                 Some data can cause the sound bank to feedback
                                 when certain combinations of weather are met. It
                                 is a beautiful phenomenon, but can certainly
-                                hurt your ears!
+                                hurt your ears!  Depending on your computer hardware,
+                                the sound may also be very quiet if played from internal
+                                speakers on laptops.
                             </p>
-                            <a href="https://github.com/daniel-mckemie/weather-sonification" target="_blank">Source Code on Github</a>
+                            <a href="https://github.com/daniel-mckemie/weather-sonification" target="_blank" rel="noopener noreferrer">Source Code on Github</a>
                         </div>
-                        <div class="modal-footer">
+                        <div className="modal-footer">
                             <button
                                 type="button"
-                                class="btn btn-secondary"
+                                className="btn btn-secondary"
                                 data-dismiss="modal"
                             >
                                 Close

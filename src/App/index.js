@@ -124,7 +124,7 @@ class App extends Component {
 					<div className="main">
 						<div className="container">						
 							<div className="row">
-								<div className="col-4 form-container">
+								<div className="col-6 form-container">
 									<LocFormCity loadWeather={this.getWeatherByCity} />
 									<hr />
 									<LocFormZip loadWeather={this.getWeatherByZip} />
@@ -133,7 +133,7 @@ class App extends Component {
 									<hr />
 									<Instructions />																         
 								</div>
-								<div className="col-4">
+								<div className="col-6">
 									<Weather
 										error={this.state.error}
 										temperature={this.state.temperature}
