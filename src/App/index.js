@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import './style.css';
 
 import {
@@ -7,14 +7,14 @@ import {
 	RGain,
 	ROscillator,
 	RPipeline
-} from "r-audio";
+} from 'r-audio';
 
-import Info from "../Info";
-import InfoFoot from "../InfoFoot";
-import Instructions from "../Instructions";
-import Weather from "../Weather";
-import LocFormCity from "../LocFormCity";
-import LocFormZip from "../LocFormZip";
+import Info from '../Info';
+import InfoFoot from '../InfoFoot';
+import Instructions from '../Instructions';
+import Weather from '../Weather';
+import LocFormCity from '../LocFormCity';
+import LocFormZip from '../LocFormZip';
 
 const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
 
@@ -91,7 +91,7 @@ class App extends Component {
 		const zip = e.target.elements.zip.value;
 		e.preventDefault();
 		const api_call = await fetch(
-			`http://api.openweathermap.org/data/2.5/weather?zip=${zip},us&appid=${API_KEY}`
+			`https://api.openweathermap.org/data/2.5/weather?zip=${zip},us&appid=${API_KEY}`
 		);
 		const response = await api_call.json();	
 		if (zip) {
