@@ -9,7 +9,7 @@ const Instructions = props => {
                 data-toggle="modal"
                 data-target="#exampleModal"
             >
-                INSTRUCTIONS
+                ABOUT
             </button>
 
             <div
@@ -24,7 +24,7 @@ const Instructions = props => {
                     <div className="modal-content">
                         <div className="modal-header">
                             <h5 className="modal-title" id="exampleModalLabel">
-                                Instructions for use:
+                                About:
                             </h5>
                             <button
                                 type="button"
@@ -36,7 +36,20 @@ const Instructions = props => {
                             </button>
                         </div>
                         <div className="modal-body">
-                            
+                            <p>
+                                Inspired by Quintron's{" "}
+                                <b>
+                                    <i>Weather Warlock</i>
+                                </b>
+                                . I first heard his invention when he placed one
+                                in upstate New York at WGXC's Wave Farm, where I
+                                had a monthly radio show for some time. More
+                                information on his invention can be found
+                                <a href="https://wavefarm.org/ta/works/g7yqrm">
+                                    {" "}
+                                    here.
+                                </a>
+                            </p>
                             <p>
                                 This is an app that sonifies real time weather
                                 data taken from the Open Weather Map, and
@@ -70,11 +83,17 @@ const Instructions = props => {
                                 Some data can cause the sound bank to feedback
                                 when certain combinations of weather are met. It
                                 is a beautiful phenomenon, but can certainly
-                                hurt your ears!  Depending on your computer hardware,
-                                the sound may also be very quiet if played from internal
-                                speakers on laptops.
+                                hurt your ears! Depending on your computer
+                                hardware, the sound may also be very quiet if
+                                played from internal speakers on laptops.
                             </p>
-                            <a href="https://github.com/daniel-mckemie/weather-sonification" target="_blank" rel="noopener noreferrer">Source Code on Github</a>
+                            <a
+                                href="https://github.com/daniel-mckemie/weather-sonification"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                Source Code on Github
+                            </a>
                         </div>
                         <div className="modal-footer">
                             <button
@@ -83,7 +102,7 @@ const Instructions = props => {
                                 data-dismiss="modal"
                             >
                                 Close
-                            </button>                            
+                            </button>
                         </div>
                     </div>
                 </div>

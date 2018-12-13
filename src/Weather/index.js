@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './style.css'
 
-class Weather extends React.Component {
-	render() {
-		return (
-			<div>
+class Weather extends Component {
+  render() {
+    return (
+      <div>
 				<ul className="list-group">
 
 				{
@@ -69,8 +69,8 @@ class Weather extends React.Component {
 				}
 				</ul>
 			</div>
-		);
-	}
+    );
+  }
 }
 
 export default Weather;
